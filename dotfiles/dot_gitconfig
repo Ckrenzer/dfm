@@ -1,0 +1,11 @@
+[user]
+	email = crkrenz72@gmail.com
+	name = Connor Krenzer
+[credential]
+	helper = 
+	helper = /usr/local/bin/git-credential-manager
+	credentialStore = gpg
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[core]
+	editor = nvim

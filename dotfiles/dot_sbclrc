@@ -1,0 +1,12 @@
+#-quicklisp
+  (let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
+                                         (user-homedir-pathname))))
+    (when (probe-file quicklisp-init)
+      (load quicklisp-init)))
+
+;;; Let's avoid going into the debugger every time we encounter an error. It's quite tedious.
+(defun debug-ignore (c h) (declare (ignore h)) (print c) (abort))
+(setf *debugger-hook* #'debug-ignore)
+
+;;; set the REPL's print width to 120 characters
+(setf *print-right-margin* 120)
