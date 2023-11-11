@@ -27,7 +27,12 @@ BEGIN{
         }
         if(!(current_dir in alldirs)){
             alldirs[current_dir]
-            system(sprintf("test -d %s || mkdir %s", current_dir, current_dir))
+            cmd_mkdir = sprintf("test -d %s || mkdir %s", current_dir, current_dir)
+            if(only_print_dirname){# useful for testing
+                print cmd_mkdir
+            } else {
+                system(cmd_mkdir)
+            }
         }
         previous_dir = current_dir
     }
