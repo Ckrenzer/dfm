@@ -1,5 +1,5 @@
 notes
 driveeject
 up [n]
-slinks
+nav
 screencast

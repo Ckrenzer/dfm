@@ -1,5 +1,32 @@
 #!/usr/bin/bash
 
+# cd to a directory in the shortcuts file
+function _nav(){
+    shortcuts_file="$HOME/bashrc/shortcuts.txt"
+    local cur="${COMP_WORDS[COMP_CWORD]}"
+
+    if test -f "$shortcuts_file" && test -r "$shortcuts_file"; then
+        COMPREPLY=($(cut "$shortcuts_file" -d ";" -f2 | grep "^${cur}"))
+    else
+        COMPREPLY=()
+    fi
+}
+function nav(){
+    shortcuts_file="$HOME/bashrc/shortcuts.txt"
+    if test "$#" -eq 0
+    then
+        echo "Shortcut Name:"
+        cut "$shortcuts_file" -d";" -f2 | sort
+        return 0
+    fi
+    cd $(awk -v shortcut="$1" 'BEGIN{FS=";"} $2 == shortcut{print $1}' "$HOME/bashrc/shortcuts.txt")
+}
+complete -F _nav nav
+
+function notes(){
+    nav proj && nvim notes/to-do.txt && cd -
+}
+
 # Moves the working directory up 'n' times
 function up(){
     n=$1
