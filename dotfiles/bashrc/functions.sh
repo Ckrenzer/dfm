@@ -2,7 +2,7 @@
 
 # cd to a directory in the shortcuts file
 function _nav(){
-    shortcuts_file="$HOME/bashrc/shortcuts.txt"
+    shortcuts_file="$HOME/bashrc/autocomplete/_nav.txt"
     local cur="${COMP_WORDS[COMP_CWORD]}"
 
     if test -f "$shortcuts_file" && test -r "$shortcuts_file"; then
@@ -12,14 +12,14 @@ function _nav(){
     fi
 }
 function nav(){
-    shortcuts_file="$HOME/bashrc/shortcuts.txt"
+    shortcuts_file="$HOME/bashrc/autocomplete/_nav.txt"
     if test "$#" -eq 0
     then
         echo "Shortcut Name:"
         cut "$shortcuts_file" -d";" -f2 | sort
         return 0
     fi
-    cd $(awk -v shortcut="$1" 'BEGIN{FS=";"} $2 == shortcut{print $1}' "$HOME/bashrc/shortcuts.txt")
+    cd $(awk -v shortcut="$1" 'BEGIN{FS=";"} $2 == shortcut{print $1}' "$shortcuts_file")
 }
 complete -F _nav nav
 
@@ -51,11 +51,30 @@ function up(){
 }
 
 # Eject drive
-function driveeject(){
-    cd ~
-    cat ~/base/.personal | sudo -S eject /dev/sdb
-    echo ""
+function _driveeject(){
+    shortcuts_file="$HOME/bashrc/autocomplete/_driveeject.txt"
+    local cur="${COMP_WORDS[COMP_CWORD]}"
+
+    if test -f "$shortcuts_file" && test -r "$shortcuts_file"; then
+        COMPREPLY=($(grep "^${cur}" "$shortcuts_file"))
+    else
+        COMPREPLY=()
+    fi
 }
+function driveeject(){
+    if test -z "$1"; then
+        echo "A drive was not supplied!"
+        return 1
+    elif ! [[ "$1" =~ "/dev/sd" ]]; then
+        echo "Only drives on /dev/sd* are supported!"
+        return 1
+    elif ! df | grep "^$1 " > /dev/null; then
+        echo "Drive '$1' not connected!"
+        return 1
+    fi
+    umount "$1" && eject "$1"
+}
+complete -F _driveeject driveeject
 
 # Casts the screen of my phone in developer mode
 function screencast(){
