@@ -7,6 +7,7 @@ lsp.ensure_installed({
 -- 'awk-language-server', -- search MasonInstall for awk and it will take care of the rest
    'bashls',
    'java_language_server',
+   'r-languageserver',
    'jdtls',
    'julials',
    'sqlls',
