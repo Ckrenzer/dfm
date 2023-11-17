@@ -4,14 +4,14 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
--- 'awk-language-server', -- search MasonInstall for awk and it will take care of the rest
+   'awk_ls',
    'bashls',
    'java_language_server',
-   'r-languageserver',
+   'r_language_server',
    'jdtls',
    'julials',
    'sqlls',
--- 'vim-language-server',
+   'vimls',
 })
 
 -- Fix Undefined global 'vim'
