@@ -18,7 +18,7 @@ lsp.ensure_installed({
 lsp.nvim_workspace()
 
 
-local cmp = require('cmp')
+local cmp = require("cmp")
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
@@ -61,7 +61,18 @@ end)
 
 lsp.setup()
 
+-- Diagnostics settings
 vim.diagnostic.config({
-    virtual_text = true
+    virtual_text = false,
+    underline = false,
 })
+require("toggle_lsp_diagnostics").init(vim.diagnostic.config())
+vim.o.updatetime = 200
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  group = vim.api.nvim_create_augroup("float_diagnostic_cursor", { clear = true }),
+  callback = function ()
+    vim.diagnostic.open_float(nil, { focus = false })
+  end
+})
+
 EOF
