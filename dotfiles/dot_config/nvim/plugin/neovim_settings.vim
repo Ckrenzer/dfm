@@ -1,6 +1,13 @@
 " NEOVIM SETTINGS
 colorscheme industry
-hi MatchParen cterm=bold,underline ctermbg=none ctermfg=yellow " Set the color for matching parentheses, braces, etc.
+" Set the color for matching parentheses, braces, etc.
+hi MatchParen
+            \ cterm=bold,underline
+            \ ctermbg=NONE
+            \ ctermfg=Yellow
+            \ gui=bold,underline
+            \ guibg=NONE
+            \ guifg=Yellow
 set splitright
 syntax enable
 set showmode
