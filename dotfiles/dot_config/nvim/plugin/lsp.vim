@@ -71,7 +71,10 @@ vim.o.updatetime = 200
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
   group = vim.api.nvim_create_augroup("float_diagnostic_cursor", { clear = true }),
   callback = function ()
-    vim.diagnostic.open_float(nil, { focus = false })
+    vim.diagnostic.open_float(nil, {
+        focus = false,
+        severity = { min = vim.diagnostic.severity.WARN },
+    })
   end
 })
 
