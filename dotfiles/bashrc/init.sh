@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 xset r rate 225 75
+PATH="${PATH}:${HOME}/.local/bin" # for pip packages
 
 
 # <<BELOW THIS POINT WAS THE .BASHRC PRECONFIGURED WITH THE LINUX MINT INSTALLATION>>
