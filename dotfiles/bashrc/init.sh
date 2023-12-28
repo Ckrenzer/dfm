@@ -2,6 +2,7 @@
 
 xset r rate 225 75
 PATH="${PATH}:${HOME}/.local/bin" # for pip packages
+export JULIA_NUM_THREADS=$(nproc)
 
 
 # <<BELOW THIS POINT WAS THE .BASHRC PRECONFIGURED WITH THE LINUX MINT INSTALLATION>>
