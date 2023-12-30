@@ -4,6 +4,7 @@
 /home/ckrenzer/projects/repos/active/;active
 /home/ckrenzer/projects/repos/active/dfm/;dfm
 /home/ckrenzer/projects/repos/active/swm/;swm
+/home/ckrenzer/projects/repos/active/wordle-solver/;word
 /home/ckrenzer/projects/repos/active/Winter-Livestock-Data/;wl
 /home/ckrenzer/projects/repos/active/advent_of_code/;aoc
 /home/ckrenzer/projects/repos/active/crypto_arbitrage/;crypto
