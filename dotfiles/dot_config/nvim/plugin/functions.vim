@@ -2,7 +2,9 @@
 function! REPLOpener(repl)
     " The 'start a REPL in a terminal window' code
     exe "vsplit | term " .. a:repl
-    set nonu | set nornu | normal G
+    set nonumber
+    set norelativenumber
+    normal G
     let g:repl_jobid = b:terminal_job_id
     let g:repl_bufnr = bufnr('')
     " Set REPL syntax
@@ -10,6 +12,7 @@ function! REPLOpener(repl)
         set filetype=lispout
     endif
     exe 1 "wincmd w"
+    exe 'let b:slime_config = {"jobid": "' . g:repl_jobid . '"}'
 endfunction
 command! -nargs=1 REPLStart call REPLOpener(<q-args>)
 nnoremap <LocalLeader>jf :REPLStart 
