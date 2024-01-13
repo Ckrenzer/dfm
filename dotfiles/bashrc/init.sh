@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 xset r rate 225 75
-PATH="${PATH}:${HOME}/.local/bin" # for pip packages
+PATH="${PATH}:${HOME}/.local/bin:${HOME}/miniconda"
 export JULIA_NUM_THREADS=$(nproc)
 
 
