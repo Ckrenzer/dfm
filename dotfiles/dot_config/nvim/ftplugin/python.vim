@@ -1,2 +1,2 @@
 " Bracketed paste is necessary for slime to work in ipython
-let b:slime_bracketed_paste = 1
+let g:slime_python_ipython = 1
