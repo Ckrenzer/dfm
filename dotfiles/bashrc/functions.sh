@@ -50,31 +50,37 @@ function up(){
     done
 }
 
-# Eject drive
-function _driveeject(){
-    shortcuts_file="$HOME/bashrc/autocomplete/_driveeject.txt"
-    local cur="${COMP_WORDS[COMP_CWORD]}"
-
-    if test -f "$shortcuts_file" && test -r "$shortcuts_file"; then
-        COMPREPLY=($(grep "^${cur}" "$shortcuts_file"))
-    else
-        COMPREPLY=()
-    fi
-}
+# Eject all drives mounted on /media/$(whoami)/
 function driveeject(){
-    if test -z "$1"; then
-        echo "A drive was not supplied!"
-        return 1
-    elif ! [[ "$1" =~ "/dev/sd" ]]; then
-        echo "Only drives on /dev/sd* are supported!"
-        return 1
-    elif ! df | grep "^$1 " > /dev/null; then
-        echo "Drive '$1' not connected!"
-        return 1
-    fi
-    umount "$1" && eject "$1"
+    lsblk -o NAME,TYPE,MOUNTPOINT | \
+        # start at position 3 to get rid of file tree 'links' of lsblk
+        # strip the drive partition numbers, leaving us with the drive names.
+        awk -v usr=$(whoami) \
+        'BEGIN{
+            external_drive_pattern = "/media/" usr "/"
+        }
+
+        $2 == "disk" {
+            current_disk = $1
+            next
+        }
+
+        $3 ~ external_drive_pattern {
+            external_drives[current_disk]
+        }
+
+        # this will likely never do anything meaningful, but NEVER eject the boot drive
+        $3 == "/" {
+            delete external_drives[current_disk]
+        }
+
+        END{
+            for(external_drive in external_drives){
+                print external_drive
+            }
+        }' | \
+        sort | uniq | xargs -r -n1 sudo eject
 }
-complete -F _driveeject driveeject
 
 # Casts the screen of my phone in developer mode
 function screencast(){

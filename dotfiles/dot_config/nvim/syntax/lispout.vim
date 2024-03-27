@@ -60,4 +60,3 @@ highlight lispoutNegativeNumber ctermfg=160           " Dark orange background
 highlight lispoutString         ctermfg=85            " Green
 highlight lispoutError          ctermfg=220 ctermbg=9 " Red background with yellow font
 highlight lispoutRestart        ctermfg=111           " Baby blue font
-

@@ -16,8 +16,6 @@ let R_objbr_allnames = 0  " Show hidden objects
 vmap <buffer> <C-\> <Plug>RDSendSelection
 nmap <buffer> <C-\> <Plug>RDSendLine
 let R_assign_map = '<M-->'
-" omni completion:
-""""""" imap <leader><leader> <C-x><C-o> " not feeling this one anymore
 nmap <buffer> <Localleader>: :RSend 
 "
 " CUSTOM FUNCTIONS

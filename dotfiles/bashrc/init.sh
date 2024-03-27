@@ -1,8 +1,9 @@
 #!/usr/bin/bash
 
 xset r rate 225 75
-PATH="${PATH}:${HOME}/.local/bin:${HOME}/miniconda"
+PATH="${PATH}:${HOME}/.local/bin"
 export JULIA_NUM_THREADS=$(nproc)
+export EDITOR=nvim
 
 
 # <<BELOW THIS POINT WAS THE .BASHRC PRECONFIGURED WITH THE LINUX MINT INSTALLATION>>

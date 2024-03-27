@@ -2,10 +2,6 @@ let maplocalleader = ' '
 let mapleader = '\'
 set mouse=
 
-
-" You install plugins from within NeoVim by typing
-"   :PlugInstall
-" and then restarting NeoVim.
 call plug#begin()
     " LSP
     " LSP Support
@@ -17,7 +13,6 @@ call plug#begin()
     Plug 'hrsh7th/cmp-nvim-lsp' " Required
     Plug 'L3MON4D3/LuaSnip'     " Required
     Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
-
 
     Plug 'jpalardy/vim-slime'
     Plug 'Asheq/close-buffers.vim'
@@ -43,5 +38,5 @@ call plug#begin()
     Plug 'vlime/vlime', {'rtp': 'vim/'}
 
     " R
-    Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
+    Plug 'jalvesaq/Nvim-R', {'branch': 'master'}
 call plug#end()
