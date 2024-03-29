@@ -1,7 +1,6 @@
 #!/usr/bin/awk -f
 
-# creates a backup of the user's dotfiles
-# (uses dotfile_to_syspath.awk's output to determine paths).
+# creates a backup of the user's dotfiles.
 
 BEGIN{
     system("test -d backup || mkdir backup")
@@ -9,17 +8,11 @@ BEGIN{
     backup_dir = sprintf("backup/%s", timestamp)
     system(sprintf("mkdir %s", backup_dir))
     FS = ";"
-    repo_file_field = 1
-    system_file_field = 2
 }
 
 {
-    # pass the input to the next command in a pipeline
-    if(forward_input){
-        print $0
-    }
-    system_file = $(system_file_field)
-    cmd_copy = sprintf("cp %s %s 2>/dev/null", system_file, backup_dir)
+    # $2 is the path to the pre-existing dotfile Ex. ~/.bashrc
+    cmd_copy = sprintf("cp %s %s 2>/dev/null", $2, backup_dir)
     system(cmd_copy)
 }
 
