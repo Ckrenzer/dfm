@@ -4,7 +4,7 @@ xset r rate 225 75
 PATH="${PATH}:${HOME}/.local/bin"
 export JULIA_NUM_THREADS=$(nproc)
 export EDITOR=nvim
-
+export AWKPATH=$HOME/repos/forks_and_clones/awk-libs/
 
 # <<BELOW THIS POINT WAS THE .BASHRC PRECONFIGURED WITH THE LINUX MINT INSTALLATION>>
 
