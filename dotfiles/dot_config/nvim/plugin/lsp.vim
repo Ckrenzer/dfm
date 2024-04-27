@@ -1,18 +1,16 @@
 lua <<EOF
 local lsp = require("lsp-zero")
-
 lsp.preset("recommended")
-
 lsp.ensure_installed({
    'awk_ls',
    'bashls',
+   'pylsp',
    'r_language_server',
    'jdtls',
    'julials',
    'sqlls',
    'vimls',
 })
-
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 

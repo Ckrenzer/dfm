@@ -1,11 +1,16 @@
 " Open a REPL of your choosing
 function! REPLOpener(repl)
     " The 'start a REPL in a terminal window' code
+    let base_repl_cmd = "vsplit | term " .. a:repl
     if a:repl == "sblc"
-        exe "vsplit | term " .. a:repl .. " --load $HOME/.local/share/nvim/plugged/vlime/lisp/start-vlime.lisp"
+        exe base_repl_cmd .. " --load $HOME/.local/share/nvim/plugged/vlime/lisp/start-vlime.lisp"
         set filetype=lispout
     else
-        exe "vsplit | term " .. a:repl
+        exe base_repl_cmd
+        " Bracketed paste is necessary for slime to work with ipython
+        " But you have to be sure that it's unset when not in ipython
+        " because this setting breaks the regular python repl
+        let g:slime_python_ipython = a:repl =~ "ipython"
     endif
     set nonumber norelativenumber
     normal G
