@@ -17,6 +17,10 @@ call plug#begin()
     Plug 'jpalardy/vim-slime'
     Plug 'Asheq/close-buffers.vim'
 
+    " Colorschemes
+    Plug 'mcchrish/zenbones.nvim'
+    Plug 'rktjmp/lush.nvim'
+
     " need newer version of nvim, need to configure
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'

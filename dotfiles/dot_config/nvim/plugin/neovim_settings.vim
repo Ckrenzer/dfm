@@ -1,5 +1,6 @@
 " NEOVIM SETTINGS
-colorscheme industry
+set termguicolors
+colorscheme zenburned
 " Set the color for matching parentheses, braces, etc.
 hi MatchParen
             \ cterm=bold,underline
