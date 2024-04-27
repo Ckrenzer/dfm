@@ -2,6 +2,13 @@
 let R_nvim_wd = 1
 " Set startup options for R
 let R_args = ['--no-save', '--no-restore-data']
+" Close terminal when R exits
+let R_close_term = 1
+" Set the parameters to base::source when sending a selection
+let R_source_args = "print.eval = FALSE, echo = FALSE"
+" Open the R terminal in another terminal using tmux
+" I go back and forth on this--it's a good one to keep handy, though
+let R_external_term = 0
 " Set the starting column for right-aligned comments inserted with <LocalLeader>;
 let r_indent_comment_column = 20
 " Stop the annoying jumping in the debugger
