@@ -3,5 +3,4 @@
 let g:slime_target = "neovim"
 " moving the cursor back to where you started is pretty tedious
 let g:slime_preserve_curpos = 0
-xmap <C-\> <Plug>SlimeRegionSend
 nmap <C-\> <Plug>SlimeLineSend
