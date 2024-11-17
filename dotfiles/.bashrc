@@ -1,5 +1,3 @@
-printf "Hello, Beautiful.\nRun 'mycmd' to view your custom functions.\n\n"
-
 # Load all helper files
 source ~/bashrc/init.sh
 FILES=$(find ~/bashrc -name '*.sh' -not -name 'init.sh')
