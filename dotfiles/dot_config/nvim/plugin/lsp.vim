@@ -5,6 +5,7 @@ lsp.ensure_installed({
    'awk_ls',
    'bashls',
    'pylsp',
+   'lua_ls',
    'r_language_server',
    'jdtls',
    'julials',
@@ -66,7 +67,7 @@ vim.diagnostic.config({
     underline = false,
 })
 vim.o.updatetime = 200
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+vim.api.nvim_create_autocmd({ "CursorHold", }, {
   group = vim.api.nvim_create_augroup("float_diagnostic_cursor", { clear = true }),
   callback = function ()
     vim.diagnostic.open_float(nil, {
