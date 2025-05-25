@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 PATH="${PATH}:${HOME}/.local/bin"
+PATH="${HOME}/.duckdb/cli/latest":$PATH
 export JULIA_NUM_THREADS=$(nproc)
 export EDITOR=nvim
 export VISUAL=nvim
