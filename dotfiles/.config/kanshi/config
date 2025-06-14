@@ -1,0 +1,15 @@
+# configure as many display profiles as you need
+# refer to "man kanshi" to find out how to configure profiles
+# https://github.com/emersion/kanshi#configuration-file
+# * get your current screen name: swaymsg -t get_outputs
+# * set the resolution and position for your screen: output HDMI1 mode 1920x1080 position 0,0
+# * set the scaling for your screen: output HDMI1 scale 2
+
+profile docked_with_benq_monitor_only {
+    output eDP-1 disable
+    output "BNQ BenQ XL2411Z 55G04337SL0" mode 1920x1080@60.000Hz
+}
+
+profile {
+    output eDP-1 enable position 0,0
+}
