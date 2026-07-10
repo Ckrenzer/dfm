@@ -6,7 +6,6 @@ export JULIA_NUM_THREADS=$(nproc)
 export EDITOR=nvim
 export VISUAL=nvim
 export AWKPATH=$HOME/repos/forks_and_clones/awk-libs/
-set completion-ignore-case On
 
 # <<BELOW THIS POINT WAS THE .BASHRC PRECONFIGURED WITH THE MANJARO INSTALLATION>>
 # If not running interactively, don't do anything
